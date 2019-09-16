@@ -1,4 +1,4 @@
- package com.example.myapplication;
+ package com.example.myapplication.activity;
 
  import android.content.DialogInterface;
  import android.content.Intent;
@@ -9,6 +9,7 @@
  import android.widget.RelativeLayout;
  import android.widget.Toast;
 
+ import com.example.myapplication.R;
  import com.example.myapplication.utils.SharedUtils;
  import com.example.myapplication.utils.StatusUtils;
 
