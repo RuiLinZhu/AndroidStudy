@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.LoginActivity;
 import com.example.myapplication.activity.SettingActivity;
+import com.example.myapplication.activity.UserInfoActivity;
+import com.example.myapplication.utils.StatusUtils;
 
 public class MyInfoFragment extends Fragment {
     private Context mContext;
@@ -56,7 +58,8 @@ public class MyInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isLogin) {
-
+                    Intent intent  = new Intent(getContext(), UserInfoActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent = new Intent(mContext, LoginActivity.class);
                     startActivityForResult(intent, 1);

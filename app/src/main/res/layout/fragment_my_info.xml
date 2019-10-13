@@ -4,12 +4,11 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical">
-
     <LinearLayout
         android:id="@+id/ll_head"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="@drawable/img"
+        android:background="@drawable/sea"
         android:orientation="vertical">
 
         <ImageView

@@ -24,6 +24,7 @@ public class ModifyPwdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusUtils.setImmersionMode(this);
         setContentView(R.layout.activity_modify_pwd);
 
         StatusUtils.initToolbar(ModifyPwdActivity.this, "修改密码", true, false);

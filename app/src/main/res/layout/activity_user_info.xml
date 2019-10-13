@@ -7,9 +7,10 @@
     android:background="@android:color/white"
     android:orientation="vertical"
     tools:context=".activity.UserInfoActivity">
+<include layout="@layout/tool_bar"/>
 
     <RelativeLayout
-        android:id="@+id/rl_modify_avatar"
+        android:id="@+id/rl_avatar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F7F8F8"
@@ -21,10 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="25dp"
-            android:text="修改头像"
+            android:text="头像"
             android:textColor="#A3A3A3"
             android:textSize="16sp" />
         <ImageView
+            android:id="@+id/iv_avatar"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
@@ -56,6 +58,7 @@
             android:textColor="#A3A3A3"
             android:textSize="16sp" />
         <TextView
+            android:id="@+id/tv_username"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:text="npc"
@@ -71,7 +74,7 @@
         android:background="#E3E3E3" />
 
     <RelativeLayout
-        android:id="@+id/rl_modify_nickname"
+        android:id="@+id/rl_nickname"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F7F8F8"
@@ -83,10 +86,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="25dp"
-            android:text="修改昵称"
+            android:text="昵称"
             android:textColor="#A3A3A3"
             android:textSize="16sp" />
         <TextView
+            android:id="@+id/tv_nickname"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:text="npc"
@@ -102,7 +106,7 @@
         android:background="#E3E3E3" />
 
     <RelativeLayout
-        android:id="@+id/rl_modify_sex"
+        android:id="@+id/rl_sex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F7F8F8"
@@ -114,10 +118,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="25dp"
-            android:text="修改性别"
+            android:text="性别"
             android:textColor="#A3A3A3"
             android:textSize="16sp" />
         <TextView
+            android:id="@+id/tv_sex"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:text="男"
@@ -133,7 +138,7 @@
         android:background="#E3E3E3" />
 
     <RelativeLayout
-        android:id="@+id/rl_modify_signature"
+        android:id="@+id/rl_signature"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F7F8F8"
@@ -145,10 +150,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="25dp"
-            android:text="修改签名"
+            android:text="签名"
             android:textColor="#A3A3A3"
             android:textSize="16sp" />
         <TextView
+            android:id="@+id/tv_signature"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:text="npc"

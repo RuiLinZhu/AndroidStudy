@@ -9,14 +9,14 @@
     </style>
 
     <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@android:color/background_dark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!--设置公爵栏标题等的颜色-->
-        <item name="colorControlNormal">@android:color/white</item>
+        <!--设置工具栏标题等的颜色-->
+        <item name="colorControlNormal">@android:color/holo_orange_light</item>
     </style>
 
     <style name="toolbar.style" parent="Base.ThemeOverlay.AppCompat.ActionBar">
