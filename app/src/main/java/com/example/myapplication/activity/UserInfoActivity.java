@@ -1,5 +1,6 @@
 package com.example.myapplication.activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.myapplication.R;
 import com.example.myapplication.entity.UserInfo;
 import com.example.myapplication.service.Impl.UserInfoServiceImpl;
@@ -18,6 +20,13 @@ import com.example.myapplication.service.UserInfoService;
 import com.example.myapplication.utils.SharedUtils;
 import com.example.myapplication.utils.StatusUtils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,6 +60,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
 
         service = new UserInfoServiceImpl(this);
         userInfo = service.get(spUsername);
+        userInfo = readFromInternal();
         if(userInfo==null){
             userInfo=new UserInfo();
             userInfo.setUsername(spUsername);
@@ -58,6 +68,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
             userInfo.setSignature("npc");
             userInfo.setSex("男");
             service.save(userInfo);
+            saveToInternal(userInfo);
         }
     }
     private void initView(){
@@ -167,5 +178,38 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         }
         //2.3保存到数据库
         service.modify(userInfo);
+    }
+
+    private static final String FILE_NAME = "userinfo.txt";
+    //2.内部存储
+    //保存
+    private void saveToInternal(UserInfo userInfo){
+        //内部存储目录：data/data/包名/files/
+        try{
+            //1.打开文件输出流
+            FileOutputStream out = this.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
+            //2.创建BufferedWriter对象
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            //3.写入数据
+            writer.write(JSON.toJSONString(userInfo));
+            //4.关闭输出流;
+            writer.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    //读取
+    private UserInfo readFromInternal(){
+        UserInfo userInfo = null;
+        try{
+            FileInputStream in = this.openFileInput(FILE_NAME);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String data =reader.readLine();
+            userInfo = JSON.parseObject(data,UserInfo.class);
+            reader.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return userInfo;
     }
 }

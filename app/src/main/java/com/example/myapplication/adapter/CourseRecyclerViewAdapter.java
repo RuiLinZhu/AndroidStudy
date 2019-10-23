@@ -18,13 +18,15 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     private List<Course> courses;
     private List<Integer> imgIds;
 
-    public CourseRecyclerViewAdapter(List<Course> courses){
-        this.courses=courses;
+    private OnItemClickListener itemClickListener;
+
+    public CourseRecyclerViewAdapter(List<Course> courses) {
+        this.courses = courses;
         setImgIds();
     }
 
-    private void setImgIds(){
-        imgIds=new ArrayList<>();
+    private void setImgIds() {
+        imgIds = new ArrayList<>();
         imgIds.add(R.drawable.zed);
         imgIds.add(R.drawable.zed);
         imgIds.add(R.drawable.zed);
@@ -45,16 +47,27 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.id.item_course,parent,false);
-        ViewHolder holder=new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_course, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        Course course=courses.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        Course course = courses.get(position);
         holder.ivImg.setImageResource(imgIds.get(position));
         holder.tvTitle.setText(course.getTitle());
+
+        if(itemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListener.onItemClick(holder.itemView, position);
+                }
+            });
+        }
     }
 
     @Override
@@ -62,33 +75,22 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         return courses.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.itemClickListener = listener;
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivImg;
         TextView tvTitle;
 
-        public ViewHolder(@NonNull View itemView){
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivImg=itemView.findViewById(R.id.iv_img);
-            tvTitle=itemView.findViewById(R.id.tv_title);
+            ivImg = itemView.findViewById(R.id.iv_img);
+            tvTitle = itemView.findViewById(R.id.tv_title);
         }
     }
 
-    @Override
-    public void onBindViewHolder(final ViewHolder holder,final int position) {
-        Course course = courses.get(position);
-        holder.ivImg.setImageResource(imgIds.get(position));
-        holder.tvTitle.setText(course.getTitle());
-        if (onItemClickListener !=null){
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onItemClick(holder.itemView,position);
-                }
-            });
-        }
-    }
-
-    private void initCourseView(View view){
-
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 }

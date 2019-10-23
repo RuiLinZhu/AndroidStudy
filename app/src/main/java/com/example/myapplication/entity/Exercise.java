@@ -6,7 +6,8 @@ public class Exercise implements Serializable {
     private int id;
     private String title;
     private String subTitle;
-    private int background;  //题目标题的背景
+    private int background;
+    private String bgColor; //题目标题的背景
 
     public String getBgColor() {
         return bgColor;
@@ -16,7 +17,7 @@ public class Exercise implements Serializable {
         this.bgColor = bgColor;
     }
 
-    private String bgColor;
+
 
     public int getId() {
         return id;

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity.ExerciseDetailActivity;
-import com.example.myapplication.adapter.RecyclerViewAdapter;
+import com.example.myapplication.adapter.ExerciseRecyclerAdapter;
 import com.example.myapplication.entity.Exercise;
 import com.example.myapplication.utils.IOUtils;
 
@@ -52,12 +52,12 @@ public class RecyclerViewFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(container.getContext(),
                 DividerItemDecoration.VERTICAL));
         // 4. 创建适配器
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(exercises);
+        ExerciseRecyclerAdapter adapter = new ExerciseRecyclerAdapter(exercises);
         // 5. 设置适配器
         recyclerView.setAdapter(adapter);
 
         //6.设置监听器
-        adapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new ExerciseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Exercise exercise = exercises.get(position);

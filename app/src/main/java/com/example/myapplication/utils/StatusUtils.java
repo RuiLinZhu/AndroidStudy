@@ -12,6 +12,9 @@ import android.view.WindowManager;
 
 import com.example.myapplication.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class StatusUtils {
     /**
      * 设置沉浸式状态栏
@@ -32,6 +35,8 @@ public class StatusUtils {
      * 初始化工具栏
      * @param activity
      * @param titleName
+     * @param isHomeUp
+     * @param isHome
      */
     public static void initToolbar(final AppCompatActivity activity, String titleName,
                                    boolean isHomeUp, boolean isHome) {
@@ -51,5 +56,12 @@ public class StatusUtils {
                 activity.finish();
             }
         });
+    }
+
+    public static String getTime(){
+        Date dateTime = new Date();
+        String strDateFormat = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+        return sdf.format(dateTime);
     }
 }

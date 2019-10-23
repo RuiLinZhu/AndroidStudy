@@ -1,9 +1,8 @@
 package com.example.myapplication.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.example.myapplication.R;
@@ -16,7 +15,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciseDetailActivity extends AppCompatActivity implements ExerciseDetailAdapter.OnSelectListener {
+public class ExerciseDetailActivity extends AppCompatActivity
+        implements ExerciseDetailAdapter.OnSelectListener {
+
     //获取ExerciseFragment传来的数据
     private int id;
     private String title;
